@@ -11,7 +11,7 @@ $(function(){
 	});
 	//показать форму добавления заметки
 	$('header>#newNote').bind('click',function(){
-		if ($('.form#note').is(':visible')) {
+		if ( $('.form#note').is(':visible') ) {
 			return false;
 		} else {
 			refreshFolderSelect();
