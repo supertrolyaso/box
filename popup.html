@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="scripts/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/animate.css">
+	<!-- semantic UI components -->
+	<script src="scripts/semantic.min.js"></script>
+	<script src="scripts/dropdown.min.js"></script>
+	<!-- <script src="scripts/popup.min.js"></script> -->
+	<link rel="stylesheet" href="styles/semantic.min.css">
+	<!-- <link rel="stylesheet" href="styles/popup.min.css"> -->
+</head>
+<body>
+	<header>
+		<i id="newNote" class="sticky note icon" data-iconActive="sticky note outline icon" title="Новая заметка"></i>
+		<i id="newFolder" class="folder icon" data-iconActive="folder outline icon" title="Новая папка"></i>
+		<i id="removeNote" class="trash alternate outline icon" data-iconActive="trash alternate icon" title="Удалить заметку"></i>
+	</header>
+	<div class="form" id="note">
+		<form id="noteInputs" class="ui form">
+			<h4 class="ui dividing header">Новая заметка</h4>
+			<div class="field">
+    	    	<input type="text" placeholder="Имя заметки">
+    	  	</div>
+    	  	<div class="field">
+    	  		<textarea cols="30" rows="10" placeholder="Содержимое"></textarea>
+    	  	</div>
+			<!-- выбор папки -->
+			<div class="field" id="noteChangeFolder">
+				<label class="label">Вложить в папку</label>
+				<div class="ui fluid dropdown selection">
+					<input type="hidden" name="folderName">
+					<i class="dropdown icon"></i>
+					<div class="default text">Выберите папку</div>
+					<div class="menu">
+					</div>
+				</div>
+			</div>
+			<!-- кнопки -->
+			<div class="ui buttons">
+				<button class="true ui positive button">Добавить</button>
+  				<div class="or"></div>
+  				<button class="false ui button">Отмена</button>
+			</div>
+		</form>
+		<div class="ui bottom attached negative message">
+			<i class="icon exclamation triangle"></i>
+			Вы не заполнили одно или несколько полей.
+		</div>
+	</div>
+
+	<div class="form" id="folder">
+		<form id="folderInputs" class="ui form">
+			<h4 class="ui dividing header">Новая папка</h4>
+			<div class="field">
+				<input type="text" placeholder="Имя папки">
+			</div>
+			<div class="ui buttons">
+				<button class="true ui positive button">Добавить</button>
+  				<div class="or"></div>
+  				<button class="false ui button">Отмена</button>
+			</div>
+		</form>
+		<div class="ui bottom attached negative message">
+			<i class="icon exclamation triangle"></i>
+			Вы не заполнили одно или несколько полей.
+		</div>
+	</div>
+
+	<div id="list">
+		<span onclick="showNote($(this))" data-text="Имя тестовой заметки 1"><i class="sticky note outline icon"></i>Имя тестовой заметки 1</span>
+		<span onclick="showNote($(this))" data-text="Имя тестовой заметки 2"><i class="sticky note outline icon"></i>Имя тестовой заметки 2</span>
+		<span onclick="showNote($(this))" data-text="Имя тестовой заметки 3"><i class="sticky note outline icon"></i>Имя тестовой заметки 3</span>
+		<span onclick="showNote($(this))" data-text="Имя тестовой заметки 4"><i class="sticky note outline icon"></i>Имя тестовой заметки 4</span>
+
+		<span data-state="invisible" class="folder"><i class="folder icon"></i><name>Имя тестовой папки</name>
+			<div class="notes">
+				<span onclick="showNote($(this))" data-text="Имя тестовой заметки 4"><i class="sticky note outline icon"></i>Имя тестовой заметки 4</span>
+				<span onclick="showNote($(this))" data-text="Имя тестовой заметки 5"><i class="sticky note outline icon"></i>Имя тестовой заметки 5</span>
+			</div>
+		</span>
+		
+	</div>
+	<!-- popup -->
+	<div class="ui dimmer modals page transition hidden"><div id="modal" class="ui modal transition hidden">
+  		<div class="header">
+   			Внимание!
+  		</div>
+  		<div class="image content">
+    		<!-- <div class="image"></div> -->
+    		<div class="description">
+      			Вы уверены, что хотите удалить выбранную заметку.
+   			</div>
+  		</div>
+  		<div class="actions">
+    		<div class="ui button inverted red" onclick="$('#modal').modal('hide');">Нет, передумал.</div>
+    		<div class="ui button positive" onclick="$('#modal').modal('setting', 'transition', 'fade',applyRemoveNote()).modal('hide');">Да, хочу</div>
+  		</div>
+	</div>
+	</div>
+
+	<pre id="output"></pre>
+	<script src="scripts/main.js"></script>
+</body>
+</html>
