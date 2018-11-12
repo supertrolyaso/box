@@ -35,7 +35,7 @@ $(function(){
 	//вызываем модальное окно и спрашиваем
 	$('header>#removeNote').bind('click',function(){
 		let removeNote=$('#list span.active')[0];
-		console.log('rem note=',removeNote)
+		console.log('rem note=',removeNote);
 		if (removeNote!=undefined) {
 			$('#modal').modal('setting', 'transition', 'horizontal flip').modal('show');
 		}
